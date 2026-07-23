@@ -941,3 +941,9 @@ footer { padding-top:56px; background:#343736; }
 /* CTA da apresentação: transparente, com tipografia escura */
 .story-copy .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
 .story-copy .button.primary:hover { color:#fff; background:#242827; }
+
+/* CTA de tratamentos com contraste sobre fundo claro */
+.treatments-cta { color:#242827; border-color:rgba(36,40,39,.2); background:#f1f0ec; }
+.treatments-cta p { color:#242827!important; font-weight:700; }
+.treatments-cta .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
+.treatments-cta .button.primary:hover { color:#fff; background:#242827; }
