@@ -959,3 +959,16 @@ footer { padding-top:56px; background:#343736; }
 .hero .button { min-height:40px; padding:0 17px; font-size:.67rem; }
 @media (max-width:980px) { .hero-content { width:min(540px,64%); } }
 @media (max-width:620px) { .hero { padding-left:20px; padding-right:20px; }.hero-content { width:100%; }.hero h1 { font-size:clamp(2.25rem,11vw,3rem); } }
+
+/* Mobile: três tratamentos por linha */
+@media (max-width:760px) {
+  .icon-cards { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  .icon-card { min-height:132px; padding:13px 6px; }
+  .procedure-icon { width:46px; height:46px; margin-bottom:10px; font-size:1.25rem; }
+  .icon-card h3 { font-size:.68rem; line-height:1.2; overflow-wrap:anywhere; }
+}
+@media (max-width:360px) {
+  .icon-cards { gap:6px; }
+  .icon-card { min-height:122px; padding-inline:4px; }
+  .icon-card h3 { font-size:.62rem; }
+}
