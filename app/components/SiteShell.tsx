@@ -149,14 +149,15 @@ export function SiteShell() {
       <section className="hero" id="inicio">
         <div className="orb orb-one" aria-hidden="true"></div><div className="orb orb-two" aria-hidden="true"></div>
         <div className="hero-content" data-reveal>
-          <h1>Seu sorriso merece <em>cuidado por inteiro.</em></h1>
-          <p className="hero-copy">Clínica odontológica em Cubatão, SP, que reúne profissionais reconhecidos na Baixada Santista. Oferecemos cuidado completo, da prevenção e manutenção aos tratamentos estéticos, sempre com avaliação responsável e atendimento próximo.</p>
+          <p className="hero-kicker">JR Odontologia · Cubatão</p>
+          <h1>Excelência que se revela <em>em cada sorriso.</em></h1>
+          <p className="hero-copy">Cuidado odontológico completo, tecnologia e atenção próxima para transformar cada consulta em uma experiência tranquila e segura.</p>
           <div className="hero-actions"><WhatsAppLink /><a href="#clinica" className="button secondary">Conheça nossa localização <span aria-hidden="true">↓</span></a></div>
           <p className="helper">O atendimento e a confirmação de disponibilidade acontecem pelo WhatsApp.</p>
         </div>
         <div className="hero-visual smile-glass" data-reveal>
-          <img src="/hero-smile.webp" width="1024" height="1536" alt="Sorriso natural iluminado sobre fundo preto" fetchPriority="high" />
-          <div className="glass-note"><span className="pulse" aria-hidden="true"></span><div><strong>Seu sorriso, sua história</strong><small>Cuidado próximo em todas as fases</small></div></div>
+          <img src="/clinic-hero.png" width="1536" height="1024" alt="Consultório odontológico moderno, claro e acolhedor" fetchPriority="high" />
+          <div className="glass-note"><span className="pulse" aria-hidden="true"></span><div><strong>Odontologia feita para você</strong><small>Planejamento, conforto e cuidado próximo</small></div></div>
         </div>
         <div className="hero-insurance" id="convenios" data-reveal aria-label="Convênios odontológicos atendidos">
           <p>Convênios atendidos</p>
@@ -166,7 +167,7 @@ export function SiteShell() {
 
       <section className="section clinic-story" id="equipe" aria-labelledby="clinica-story-title">
         <div className="team-carousel" data-reveal aria-roledescription="carrossel" aria-label="Profissionais da Jr Odontologia" onMouseEnter={() => setTeamPaused(true)} onMouseLeave={() => setTeamPaused(false)} onFocusCapture={() => setTeamPaused(true)} onBlurCapture={(event) => !event.currentTarget.contains(event.relatedTarget) && setTeamPaused(false)}><div className="team-carousel-track" style={{ transform: `translateX(-${teamIndex * 100}%)` }}>{config.professionals.map((person, i) => <article className="team-slide" key={person.name} aria-hidden={i !== teamIndex}>{person.photo ? <div className="portrait-photo"><img src={person.photo} width="1024" height="1536" alt={`Fotografia de ${person.name}`} loading="lazy" /></div> : <div className="portrait-placeholder" aria-label="Fotografia profissional pendente"><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><small>Foto será adicionada em breve</small></div>}<div className="team-slide-copy"><p className="status">EQUIPE JR ODONTOLOGIA</p><h3>{person.name}</h3><p className="specialty">{person.specialty} · {person.cro}</p><p>{person.bio}</p>{"highlights" in person && person.highlights && <ul className="professional-highlights">{person.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>}</div></article>)}</div><div className="team-carousel-controls"><button type="button" onClick={() => setTeamIndex((teamIndex - 1 + config.professionals.length) % config.professionals.length)} aria-label="Profissional anterior">‹</button><button type="button" onClick={() => setTeamIndex((teamIndex + 1) % config.professionals.length)} aria-label="Próximo profissional">›</button></div></div>
-        <div className="story-copy" data-reveal><p className="eyebrow dark"><span></span> Três profissionais, um só cuidado</p><h2 id="clinica-story-title">Odontologia completa, feita por uma equipe que trabalha junto.</h2><p>Na Jr Odontologia, três cirurgiões-dentistas reúnem diferentes áreas de atuação para acompanhar prevenção, estética, reabilitação e urgências com uma visão integrada. Cada caso é conversado em equipe quando necessário, sempre com explicações claras e um plano adequado à realidade de cada pessoa.</p><WhatsAppLink label="Conhecer a clínica pelo WhatsApp" /></div>
+        <div className="story-copy" data-reveal><p className="eyebrow dark"><span></span> Nossa equipe</p><h2 id="clinica-story-title">Conhecimento técnico com um olhar verdadeiramente humano.</h2><p>Na JR Odontologia, três cirurgiões-dentistas reúnem diferentes áreas de atuação para acompanhar prevenção, estética, reabilitação e urgências com uma visão integrada. Cada caso recebe explicações claras, planejamento responsável e um cuidado adequado à realidade de cada pessoa.</p><WhatsAppLink label="Conhecer a clínica pelo WhatsApp" /></div>
       </section>
 
       <section className="section place-showcase" id="clinica">
@@ -176,7 +177,7 @@ export function SiteShell() {
       </section>
 
       <section className="section treatments" id="tratamentos">
-        <div className="section-heading split" data-reveal><div><p className="eyebrow"><span></span> Tratamentos</p><h2>Duas áreas de cuidado, um atendimento integrado.</h2></div><p>Explore os procedimentos odontológicos e de estética do sorriso oferecidos pela equipe. Cada indicação é definida somente após avaliação profissional.</p></div>
+        <div className="section-heading split" data-reveal><div><p className="eyebrow"><span></span> Tratamentos</p><h2>Excelência em cuidados odontológicos personalizados.</h2></div><p>Explore os procedimentos odontológicos e de estética do sorriso oferecidos pela equipe. Cada indicação é definida somente após avaliação profissional.</p></div>
         <div className="treatment-selector" role="tablist" aria-label="Selecione uma área de tratamento" data-reveal>{config.treatmentCategories.map((category, index) => <button key={category.name} type="button" role="tab" aria-selected={treatmentCategory === index} aria-controls="treatment-panel" className={treatmentCategory === index ? "active" : ""} onClick={() => setTreatmentCategory(index)}><span>{String(index + 1).padStart(2, "0")}</span>{category.name}<small>{category.procedures.length} procedimentos</small></button>)}</div>
         <div className="procedure-card-grid" id="treatment-panel" role="tabpanel" data-reveal>{config.treatmentCategories[treatmentCategory].procedures.map((procedure) => { const visual = procedureVisuals[procedure.name]; return <article className="procedure-card" key={procedure.name}><div className={`procedure-photo${visual?.image.includes("sprite") ? " procedure-photo-sprite" : ""}`} style={visual ? { backgroundImage: `url('${visual.image}')`, backgroundPosition: visual.position } : undefined} role="img" aria-label={`Imagem representativa de ${procedure.name}`}></div><h3>{procedure.name}</h3><p>{procedure.description}</p><WhatsAppLink label="Contato" treatment={procedure.name} className="procedure-contact" /></article>; })}</div>
         <div className="treatments-cta" data-reveal><p>Quer entender qual cuidado combina com a sua necessidade?</p><WhatsAppLink label="Solicitar orçamento pelo WhatsApp" /></div>

@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
   alternates: { canonical: "/" },
-  openGraph: { title: siteConfig.seo.title, description: siteConfig.seo.description, type: "website", locale: "pt_BR", siteName: siteConfig.clinic.name, images: [{ url: "/og.webp", width: 1744, height: 910, alt: "Jr Odontologia — Cuidado que acolhe." }] },
-  twitter: { card: "summary_large_image", title: siteConfig.seo.title, description: siteConfig.seo.description, images: ["/og.webp"] },
+  openGraph: { title: siteConfig.seo.title, description: siteConfig.seo.description, type: "website", locale: "pt_BR", siteName: siteConfig.clinic.name, images: [{ url: "/og-layout3.png", width: 1731, height: 909, alt: "JR Odontologia — Excelência que se revela em cada sorriso." }] },
+  twitter: { card: "summary_large_image", title: siteConfig.seo.title, description: siteConfig.seo.description, images: ["/og-layout3.png"] },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg" },
 };

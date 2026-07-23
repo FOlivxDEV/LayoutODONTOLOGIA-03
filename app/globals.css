@@ -104,6 +104,103 @@ footer { padding:60px max(24px,calc((100vw - 1180px)/2)) 28px; color:#c4d2d2; ba
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; } }
 @supports not (backdrop-filter:blur(10px)) { .site-header { background:#071b2b; }.glass-note { background:#eef7f5; }.treatment-card,.testimonial-empty,.contact-card { background:#153f4b; } }
 
+/* Layout 3 — landing page editorial inspirada nas referências fornecidas */
+:root { --navy:#252827; --navy-2:#333736; --teal:#337f7a; --mint:#d9ebe7; --paper:#f8f7f3; --ink:#282c2b; --muted:#6e7472; --line:rgba(40,44,43,.13); }
+body { background:var(--paper); color:var(--ink); }
+.site-header { top:0; width:100%; min-height:82px; padding:9px max(24px,calc((100vw - 1180px)/2)); border:0; border-radius:0; background:rgba(255,255,255,.96); box-shadow:0 1px 0 rgba(36,43,41,.1); backdrop-filter:blur(14px); }
+.site-header.is-scrolled { box-shadow:0 10px 34px rgba(27,36,34,.09); }
+.brand { height:62px; }
+.brand img { width:74px; height:62px; }
+.nav { color:#333837; font-size:.78rem; font-weight:700; gap:14px; }
+.nav>a:not(.button) { padding:12px 5px; border-radius:0; border-bottom:2px solid transparent; }
+.nav>a:not(.button):hover { color:var(--teal); background:transparent; border-color:var(--teal); }
+.button { min-height:44px; padding:0 21px; border-radius:4px; text-transform:uppercase; font-size:.72rem; letter-spacing:.06em; }
+.primary { background:#303433; color:#fff; box-shadow:none; }
+.primary:hover { background:var(--teal); box-shadow:0 10px 25px rgba(51,127,122,.18); }
+.secondary { color:#fff; border-color:rgba(255,255,255,.7); background:transparent; }
+.secondary:hover { background:#fff; color:#2e3533; }
+.menu-button span { background:#2f3433; }
+
+.hero { min-height:760px; padding:182px max(24px,calc((100vw - 1180px)/2)) 92px; display:block; color:#fff; background:#313836; }
+.hero:before { content:""; position:absolute; inset:82px 0 0; background:linear-gradient(90deg,rgba(17,25,23,.78) 0%,rgba(17,25,23,.5) 38%,rgba(17,25,23,.12) 70%),url('/clinic-hero.png') center/cover no-repeat; }
+.hero:after { opacity:.08; background:none; }
+.hero-content { width:min(650px,58%); padding-top:58px; }
+.hero-kicker { margin:0 0 20px; text-transform:uppercase; letter-spacing:.2em; font-size:.7rem; font-weight:800; color:#d5e7e3; }
+.hero h1 { max-width:610px; margin-bottom:24px; font-family:Inter,ui-sans-serif,system-ui,sans-serif; font-size:clamp(3rem,5vw,5rem); font-weight:750; line-height:1.02; letter-spacing:-.055em; }
+.hero h1 em { display:inline; color:#c2e2dc; font-style:normal; font-weight:750; }
+.hero-copy { max-width:550px; color:#edf4f2; font-size:1.02rem; line-height:1.75; }
+.hero-actions { margin-top:30px; }
+.hero .helper { color:#d1ddda; }
+.hero-visual { position:absolute; inset:82px 0 0; z-index:0; min-height:0; opacity:0; pointer-events:none; }
+.smile-glass { padding:0; border:0; border-radius:0; box-shadow:none; background:none; }
+.glass-note { display:none; }
+.orb { display:none; }
+.hero-insurance { position:absolute; z-index:3; left:50%; bottom:0; transform:translate(-50%,50%); width:min(1080px,calc(100% - 48px)); padding:18px 30px; border:1px solid var(--line); background:#fff; color:var(--ink); box-shadow:0 16px 35px rgba(29,45,41,.1); }
+.hero-insurance p { color:#69716f; }
+
+.section { padding:120px max(24px,calc((100vw - 1180px)/2)); }
+.clinic-story { padding-top:150px; gap:70px; background:#fff; }
+.team-carousel { border-radius:2px; box-shadow:none; border:1px solid var(--line); background:#f1f0ec; }
+.team-slide { min-width:100%; }
+.portrait-photo { min-height:540px; }
+.portrait-photo img { height:540px; object-position:center 25%; }
+.team-slide-copy { background:#f7f6f2; }
+.story-copy .eyebrow { color:var(--teal); }
+.story-copy h2,.place-main h2,.section-heading h2,.results-heading h2,.faq h2,.contact h2 { font-family:Inter,ui-sans-serif,system-ui,sans-serif; font-weight:750; line-height:1.08; letter-spacing:-.045em; }
+.story-copy h2 { font-size:clamp(2.6rem,4.1vw,4.5rem); }
+.story-copy>p:not(.eyebrow) { font-size:1rem; line-height:1.8; }
+
+.place-showcase { background:#f1f0ec; }
+.place-main { border-top-color:rgba(45,52,50,.2); }
+.clinic-photo-stack { border-radius:2px; }
+.place-contact { border-radius:2px; background:#fff; color:var(--ink); border:1px solid var(--line); box-shadow:none; }
+.place-contact .secondary { color:#303433; border-color:#9da4a2; }
+.map-preview { border-radius:2px; background:#e8ece8; color:#303433; }
+
+.treatments { color:var(--ink); background:#fff; }
+.treatments .eyebrow { color:var(--teal); }
+.split>p { color:var(--muted)!important; }
+.treatment-selector { border-bottom:1px solid var(--line); }
+.treatment-selector button { color:#7b817f; border-radius:0; background:transparent; border:0; border-bottom:3px solid transparent; }
+.treatment-selector button.active { color:#222725; background:transparent; border-color:var(--teal); }
+.procedure-card-grid { grid-template-columns:repeat(3,1fr); gap:22px; }
+.procedure-card { min-height:430px; border:1px solid var(--line); border-radius:3px; background:#fff; box-shadow:0 12px 30px rgba(27,41,37,.055); }
+.procedure-card:hover { transform:translateY(-4px); box-shadow:0 18px 38px rgba(27,41,37,.09); }
+.procedure-photo { border-radius:0; filter:saturate(.65); }
+.procedure-card h3 { font-family:Inter,ui-sans-serif,system-ui,sans-serif; font-weight:750; }
+.procedure-contact { color:var(--teal); }
+.treatments-cta { border-radius:2px; background:#f1f0ec; }
+
+.results { background:#f2f1ed; }
+.result-card { border-radius:2px; }
+.faq { background:#fff; }
+.faq summary span { color:var(--teal); }
+.contact { background:#2d3231; }
+.contact-card { border-radius:2px; }
+footer { background:#202423; }
+.floating-whatsapp { width:58px; height:58px; padding:0; border-radius:50%; overflow:hidden; background:#fff; border:1px solid rgba(0,0,0,.12); }
+.floating-whatsapp img { width:58px; height:58px; }
+
+@media (max-width:980px) {
+  .site-header { padding-inline:18px; }
+  .nav { top:82px; background:#fff; color:#303433; border:1px solid var(--line); border-radius:0; box-shadow:0 18px 40px rgba(0,0,0,.12); }
+  .nav .primary { color:#fff; }
+  .hero { padding-top:165px; }
+  .hero-content { width:min(700px,80%); }
+  .procedure-card-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:620px) {
+  .hero { min-height:690px; padding:140px 20px 100px; }
+  .hero:before { inset:82px 0 0; background:linear-gradient(90deg,rgba(18,27,25,.82),rgba(18,27,25,.45)),url('/clinic-hero.png') 67% center/cover no-repeat; }
+  .hero-content { width:100%; padding-top:36px; }
+  .hero h1 { font-size:clamp(2.65rem,13vw,4rem); }
+  .hero-insurance { width:calc(100% - 24px); padding:14px; }
+  .clinic-story { padding-top:130px; }
+  .portrait-photo,.portrait-photo img { min-height:430px; height:430px; }
+  .procedure-card-grid { grid-template-columns:1fr; }
+  .procedure-card { min-height:390px; }
+}
+
 /* Revision: richer institutional sections, photographic cards and scroll reveals */
 .smile-glass { padding:16px; border:1px solid rgba(255,255,255,.25); border-radius:180px 24px 180px 24px; background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.035)); box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 32px 80px rgba(0,0,0,.38); backdrop-filter:blur(18px); }
 .smile-glass>img { border-radius:166px 14px 166px 14px; object-position:42% 36%; }
@@ -720,3 +817,28 @@ footer { padding:60px max(24px,calc((100vw - 1180px)/2)) 28px; color:#c4d2d2; ba
   .procedure-card>p { padding:0 12px 16px; font-size:.76rem; }
   .procedure-contact { margin:0 12px 18px; font-size:.78rem; }
 }
+
+/* Layout 3 — final cascade */
+.site-header { top:0; width:100%; min-height:82px; padding:9px max(24px,calc((100vw - 1180px)/2)); border:0; border-radius:0; background:rgba(255,255,255,.96); box-shadow:0 1px 0 rgba(36,43,41,.1); color:#303433; }
+.site-header .nav { color:#303433; }
+.site-header .menu-button span { background:#303433; }
+.hero { min-height:760px; padding:182px max(24px,calc((100vw - 1180px)/2)) 92px; display:block; color:#fff; background:#313836; }
+.hero:before { content:""; position:absolute; inset:82px 0 0; background:linear-gradient(90deg,rgba(17,25,23,.78) 0%,rgba(17,25,23,.5) 38%,rgba(17,25,23,.12) 70%),url('/clinic-hero.png') center/cover no-repeat; }
+.hero-content { width:min(650px,58%); padding-top:58px; }
+.hero-visual { position:absolute; inset:82px 0 0; opacity:0; pointer-events:none; }
+.hero-insurance { position:absolute; z-index:3; left:50%; bottom:0; transform:translate(-50%,50%); width:min(1080px,calc(100% - 48px)); padding:18px 30px; background:#fff; color:#282c2b; border:1px solid rgba(40,44,43,.13); box-shadow:0 16px 35px rgba(29,45,41,.1); }
+.clinic-story { padding-top:150px; background:#fff; color:#282c2b; }
+.place-showcase { background:#f1f0ec; color:#282c2b; }
+.place-showcase + .treatments { margin-top:0; }
+.treatments { background:#fff; color:#282c2b; }
+.treatments .section-heading p,.treatments .split>p { color:#6e7472!important; }
+.treatment-selector { border-bottom:1px solid rgba(40,44,43,.13); background:transparent; }
+.treatment-selector button { color:#7b817f; background:transparent; border-radius:0; }
+.treatment-selector button.active { color:#222725; background:transparent; box-shadow:inset 0 -3px #337f7a; }
+.procedure-card-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.procedure-card { min-height:430px; border:1px solid rgba(40,44,43,.13); border-radius:3px; background:#fff; box-shadow:0 12px 30px rgba(27,41,37,.055); }
+.procedure-card h3 { color:#282c2b; background:#fff; }
+.procedure-card>p { color:#6e7472; }
+.treatments-cta { background:#f1f0ec; color:#282c2b; }
+@media (max-width:980px) { .hero-content { width:min(700px,80%); }.procedure-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:620px) { .hero { min-height:690px; padding:140px 20px 100px; }.hero:before { background:linear-gradient(90deg,rgba(18,27,25,.82),rgba(18,27,25,.45)),url('/clinic-hero.png') 67% center/cover no-repeat; }.hero-content { width:100%; padding-top:36px; }.procedure-card-grid { grid-template-columns:1fr; } }
