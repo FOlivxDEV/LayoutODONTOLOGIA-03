@@ -49,7 +49,10 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
       <nav className="nav" aria-label="Navegação principal">{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
     </header>
     <main className="treatment-detail">
-      <section className="treatment-photo-hero"><img src={image} width="1600" height="900" alt={`Imagem representativa de ${treatment.name}`} /></section>
+      <section className="treatment-photo-hero">
+        <span className="treatment-photo-backdrop" style={{ backgroundImage: `url('${image}')` }} aria-hidden="true"></span>
+        <img src={image} width="1600" height="900" alt={`Imagem representativa de ${treatment.name}`} />
+      </section>
       <article>
         <a className="back-link" href="/#tratamentos">← Voltar aos tratamentos</a>
         <p className="doctor-name">TRATAMENTO ODONTOLÓGICO</p>

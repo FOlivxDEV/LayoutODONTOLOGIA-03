@@ -976,8 +976,10 @@ footer { padding-top:56px; background:#343736; }
 /* Páginas internas de tratamento com o mesmo chrome da página inicial */
 .treatment-page-header { position:fixed; }
 .treatment-detail { padding:82px 0 0; background:#f8f7f3; }
-.treatment-photo-hero { width:100%; height:min(66vh,650px); min-height:480px; overflow:hidden; background:#252b29; }
-.treatment-photo-hero img { width:100%; height:100%; display:block; object-fit:cover; object-position:center; }
+.treatment-photo-hero { width:100%; height:min(66vh,650px); min-height:480px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background:#252b29; }
+.treatment-photo-backdrop { position:absolute; inset:-36px; background-position:center; background-size:cover; filter:blur(28px) brightness(.48) saturate(.72); transform:scale(1.08); }
+.treatment-photo-hero:after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(14,20,19,.3),transparent 25%,transparent 75%,rgba(14,20,19,.3)); }
+.treatment-photo-hero img { width:auto; max-width:min(1200px,100%); height:100%; display:block; position:relative; z-index:1; object-fit:contain; object-position:center; box-shadow:0 0 60px rgba(0,0,0,.24); }
 .treatment-detail article { width:min(920px,calc(100% - 48px)); margin:0 auto; padding:90px 0 110px; border:0; background:transparent; }
 .treatment-detail article .back-link { margin-bottom:56px; }
 .treatment-detail article h1 { margin-bottom:24px; }
