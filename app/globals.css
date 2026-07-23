@@ -972,3 +972,25 @@ footer { padding-top:56px; background:#343736; }
   .icon-card { min-height:122px; padding-inline:4px; }
   .icon-card h3 { font-size:.62rem; }
 }
+
+/* Páginas internas de tratamento com o mesmo chrome da página inicial */
+.treatment-page-header { position:fixed; }
+.treatment-detail { padding:82px 0 0; background:#f8f7f3; }
+.treatment-photo-hero { width:100%; height:min(66vh,650px); min-height:480px; overflow:hidden; background:#252b29; }
+.treatment-photo-hero img { width:100%; height:100%; display:block; object-fit:cover; object-position:center; }
+.treatment-detail article { width:min(920px,calc(100% - 48px)); margin:0 auto; padding:90px 0 110px; border:0; background:transparent; }
+.treatment-detail article .back-link { margin-bottom:56px; }
+.treatment-detail article h1 { margin-bottom:24px; }
+.treatment-detail article .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
+.treatment-detail article .button.primary:hover { color:#fff; background:#242827; }
+@media (max-width:980px) {
+  .treatment-page-header .nav { display:flex; position:static; padding:0; flex-direction:row; gap:8px; color:#303433; background:transparent; border:0; box-shadow:none; overflow-x:auto; }
+  .treatment-page-header .nav a { white-space:nowrap; font-size:.66rem; }
+  .treatment-photo-hero { height:54vh; min-height:400px; }
+}
+@media (max-width:620px) {
+  .treatment-page-header .nav { max-width:62vw; gap:5px; }
+  .treatment-page-header .nav a { padding-inline:3px; font-size:.57rem; }
+  .treatment-photo-hero { height:48vh; min-height:340px; }
+  .treatment-detail article { width:calc(100% - 36px); padding:60px 0 80px; }
+}
