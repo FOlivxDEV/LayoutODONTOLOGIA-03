@@ -924,3 +924,11 @@ footer { padding-top:56px; background:#343736; }
 @media (max-width:1100px) { .icon-cards { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 @media (max-width:760px) { .icon-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }.place-main p { font-size:.98rem; } }
 @media (max-width:460px) { .icon-cards { grid-template-columns:1fr; } }
+
+/* Logo do cabeçalho com maior presença e contraste */
+.site-header .brand { width:138px; height:64px; display:flex; align-items:center; }
+.site-header .brand img { width:128px; height:64px; object-fit:contain; filter:brightness(0) contrast(1.45); opacity:1; transform:scale(1.08); transform-origin:left center; }
+@media (max-width:620px) {
+  .site-header .brand { width:112px; }
+  .site-header .brand img { width:106px; transform:scale(1.04); }
+}
