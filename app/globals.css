@@ -937,3 +937,7 @@ footer { padding-top:56px; background:#343736; }
 .site-header { padding-left:22px; padding-right:22px; }
 @media (min-width:1400px) { .site-header { padding-left:28px; padding-right:28px; } }
 @media (max-width:620px) { .site-header { padding-left:14px; padding-right:14px; } }
+
+/* CTA da apresentação: transparente, com tipografia escura */
+.story-copy .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
+.story-copy .button.primary:hover { color:#fff; background:#242827; }
