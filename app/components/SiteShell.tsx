@@ -2,30 +2,25 @@
 /* eslint-disable @next/next/no-img-element -- vinext local image optimizer requires an ASSETS binding unavailable in development; assets are local, dimensioned and deployment-safe. */
 
 import { useEffect, useRef, useState } from "react";
-import { getTelephoneUrl, getWhatsAppUrl, siteConfig } from "../site-config";
+import { getWhatsAppUrl, siteConfig } from "../site-config";
 import type { TreatmentCategory } from "../site-config";
 
 const nav = [
   ["Início", "#inicio"], ["Clínica", "#clinica"], ["Tratamentos", "#tratamentos"],
-  ["Equipe", "#equipe"], ["Dúvidas", "#duvidas"], ["Contato", "#contato"],
+  ["Equipe", "#equipe"], ["Agendamento", "#duvidas"], ["Contato", "#contato"],
 ] as const;
 
-const procedureVisuals: Record<string, { image: string; position?: string }> = {
-  "Implante dentário": { image: "/procedures/implante-dentario.png", position: "center" },
-  "Coroa dentária": { image: "/procedures/coroa-dentaria.png", position: "center" },
-  "Canal (tratamento endodôntico)": { image: "/procedures/procedures-sprite.png", position: "0% 0%" },
-  "Prótese dentária": { image: "/procedures/procedures-sprite.png", position: "25% 0%" },
-  "Restauração": { image: "/procedures/procedures-sprite.png", position: "50% 0%" },
-  "Extração dentária": { image: "/procedures/procedures-sprite.png", position: "75% 0%" },
-  "Limpeza e raspagem": { image: "/procedures/procedures-sprite.png", position: "100% 0%" },
-  "Periodontia (tratamento de gengiva)": { image: "/procedures/procedures-sprite.png", position: "0% 100%" },
-  "Aparelho estético (ortodontia)": { image: "/procedures/procedures-sprite.png", position: "25% 100%" },
-  "Facetas": { image: "/procedures/faceta-porcelana.png", position: "center" },
-  "Lentes de contato": { image: "/procedures/procedures-sprite.png", position: "50% 100%" },
-  "Clareamento dental": { image: "/procedures/procedures-sprite.png", position: "75% 100%" },
-  "Faceta de resina": { image: "/procedures/procedures-sprite.png", position: "100% 100%" },
-  "Faceta de porcelana": { image: "/procedures/faceta-porcelana.png", position: "center" },
-};
+const heroSlides = [
+  { src: "/clinic-hero.png", alt: "Consultório odontológico moderno e acolhedor" },
+  { src: "/clinic-office-illustrative.webp", alt: "Sala clínica odontológica iluminada" },
+  { src: "/clinic-facade-illustrative.webp", alt: "Fachada ilustrativa da clínica odontológica" },
+] as const;
+
+const treatmentIcons = ["🦷", "✦", "◉", "⌁", "◇", "☼", "✓", "♢", "◎", "✧", "◌", "☆", "◈", "△"] as const;
+
+function treatmentSlug(name: string) {
+  return name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 
 function normalizeTreatmentCategories(categories: readonly TreatmentCategory[]): TreatmentCategory[] {
   const dental = categories.find((category) => category.name === "Procedimentos odontológicos");
@@ -69,10 +64,9 @@ export function SiteShell() {
     treatmentCategories: normalizeTreatmentCategories(siteConfig.treatmentCategories),
   };
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroSlide, setHeroSlide] = useState(0);
   const [clinicSlide, setClinicSlide] = useState(0);
-  const [teamIndex, setTeamIndex] = useState(0);
   const [clinicPaused, setClinicPaused] = useState(false);
-  const [teamPaused, setTeamPaused] = useState(false);
   const [treatmentCategory, setTreatmentCategory] = useState(0);
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -114,15 +108,15 @@ export function SiteShell() {
     if (menuOpen) navRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
   }, [menuOpen]);
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setHeroSlide((current) => (current + 1) % heroSlides.length), 5000);
+    return () => window.clearInterval(timer);
+  }, []);
+  useEffect(() => {
     if (clinicPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => setClinicSlide((current) => (current + 1) % 2), 3000);
     return () => window.clearInterval(timer);
   }, [clinicPaused]);
-  useEffect(() => {
-    if (teamPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setTeamIndex((current) => (current + 1) % config.professionals.length), 30000);
-    return () => window.clearInterval(timer);
-  }, [teamPaused, config.professionals.length]);
 
   return <>
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -132,7 +126,6 @@ export function SiteShell() {
       </a>
       <nav ref={navRef} id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Navegação principal">
         {nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
-        <WhatsAppLink className="button primary nav-cta" />
       </nav>
       <button ref={menuButtonRef} className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} onClick={() => setMenuOpen(v => !v)}>
         <span></span><span></span><span></span>
@@ -141,23 +134,20 @@ export function SiteShell() {
 
     <main id="conteudo">
       <section className="hero" id="inicio">
-        <div className="orb orb-one" aria-hidden="true"></div><div className="orb orb-two" aria-hidden="true"></div>
+        <div className="hero-slides" aria-live="polite">{heroSlides.map((slide, index) => <img key={slide.src} className={index === heroSlide ? "active" : ""} src={slide.src} alt={index === heroSlide ? slide.alt : ""} width="1536" height="1024" fetchPriority={index === 0 ? "high" : undefined} />)}</div>
         <div className="hero-content" data-reveal>
           <p className="hero-kicker">JR Odontologia · Cubatão</p>
           <h1>Excelência que se revela <em>em cada sorriso.</em></h1>
           <p className="hero-copy">Cuidado odontológico completo, tecnologia e atenção próxima para transformar cada consulta em uma experiência tranquila e segura.</p>
-          <div className="hero-actions"><WhatsAppLink /><a href="#clinica" className="button secondary">Conheça nossa localização <span aria-hidden="true">↓</span></a></div>
+          <div className="hero-actions"><WhatsAppLink className="button hero-button" /></div>
           <p className="helper">O atendimento e a confirmação de disponibilidade acontecem pelo WhatsApp.</p>
         </div>
-        <div className="hero-visual smile-glass" data-reveal>
-          <img src="/clinic-hero.png" width="1536" height="1024" alt="Consultório odontológico moderno, claro e acolhedor" fetchPriority="high" />
-          <div className="glass-note"><span className="pulse" aria-hidden="true"></span><div><strong>Odontologia feita para você</strong><small>Planejamento, conforto e cuidado próximo</small></div></div>
-        </div>
+        <div className="hero-indicators" aria-label="Selecionar imagem do destaque">{heroSlides.map((slide, index) => <button key={slide.src} type="button" className={index === heroSlide ? "active" : ""} onClick={() => setHeroSlide(index)} aria-label={`Mostrar imagem ${index + 1}`} aria-current={index === heroSlide ? "true" : undefined}></button>)}</div>
       </section>
 
       <section className="section clinic-story" id="equipe" aria-labelledby="clinica-story-title">
-        <div className="team-carousel" data-reveal aria-roledescription="carrossel" aria-label="Profissionais da Jr Odontologia" onMouseEnter={() => setTeamPaused(true)} onMouseLeave={() => setTeamPaused(false)} onFocusCapture={() => setTeamPaused(true)} onBlurCapture={(event) => !event.currentTarget.contains(event.relatedTarget) && setTeamPaused(false)}><div className="team-carousel-track" style={{ transform: `translateX(-${teamIndex * 100}%)` }}>{config.professionals.map((person, i) => <article className="team-slide" key={person.name} aria-hidden={i !== teamIndex}>{person.photo ? <div className="portrait-photo"><img src={person.photo} width="1024" height="1536" alt={`Fotografia de ${person.name}`} loading="lazy" /></div> : <div className="portrait-placeholder" aria-label="Fotografia profissional pendente"><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><small>Foto será adicionada em breve</small></div>}<div className="team-slide-copy"><p className="status">EQUIPE JR ODONTOLOGIA</p><h3>{person.name}</h3><p className="specialty">{person.specialty} · {person.cro}</p><p>{person.bio}</p>{"highlights" in person && person.highlights && <ul className="professional-highlights">{person.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>}</div></article>)}</div><div className="team-carousel-controls"><button type="button" onClick={() => setTeamIndex((teamIndex - 1 + config.professionals.length) % config.professionals.length)} aria-label="Profissional anterior">‹</button><button type="button" onClick={() => setTeamIndex((teamIndex + 1) % config.professionals.length)} aria-label="Próximo profissional">›</button></div></div>
-        <div className="story-copy" data-reveal><p className="eyebrow dark"><span></span> Nossa equipe</p><h2 id="clinica-story-title">Conhecimento técnico com um olhar verdadeiramente humano.</h2><p>Na JR Odontologia, três cirurgiões-dentistas reúnem diferentes áreas de atuação para acompanhar prevenção, estética, reabilitação e urgências com uma visão integrada. Cada caso recebe explicações claras, planejamento responsável e um cuidado adequado à realidade de cada pessoa.</p><WhatsAppLink label="Conhecer a clínica pelo WhatsApp" /></div>
+        <figure className="professional-photo" data-reveal><img src="/professional-fictional-layout3.png" width="1024" height="1280" alt="Retrato ilustrativo de profissional fictício" loading="lazy" /></figure>
+        <div className="story-copy" data-reveal><p className="doctor-name">DR. RAFAEL MENEZES</p><h2 id="clinica-story-title">Conhecimento técnico com um olhar verdadeiramente humano.</h2><p>Cirurgião-dentista fictício apresentado exclusivamente para composição deste layout. A proposta representa um atendimento próximo, com explicações claras, planejamento responsável e cuidado adequado à realidade de cada pessoa.</p><WhatsAppLink label="Conhecer a clínica pelo WhatsApp" /></div>
       </section>
 
       <section className="section place-showcase" id="clinica">
@@ -169,7 +159,7 @@ export function SiteShell() {
       <section className="section treatments" id="tratamentos">
         <div className="section-heading split" data-reveal><div><p className="eyebrow"><span></span> Tratamentos</p><h2>Excelência em cuidados odontológicos personalizados.</h2></div><p>Explore os procedimentos odontológicos e de estética do sorriso oferecidos pela equipe. Cada indicação é definida somente após avaliação profissional.</p></div>
         <div className="treatment-selector" role="tablist" aria-label="Selecione uma área de tratamento" data-reveal>{config.treatmentCategories.map((category, index) => <button key={category.name} type="button" role="tab" aria-selected={treatmentCategory === index} aria-controls="treatment-panel" className={treatmentCategory === index ? "active" : ""} onClick={() => setTreatmentCategory(index)}><span>{String(index + 1).padStart(2, "0")}</span>{category.name}<small>{category.procedures.length} procedimentos</small></button>)}</div>
-        <div className="procedure-card-grid" id="treatment-panel" role="tabpanel" data-reveal>{config.treatmentCategories[treatmentCategory].procedures.map((procedure) => { const visual = procedureVisuals[procedure.name]; return <article className="procedure-card" key={procedure.name}><div className={`procedure-photo${visual?.image.includes("sprite") ? " procedure-photo-sprite" : ""}`} style={visual ? { backgroundImage: `url('${visual.image}')`, backgroundPosition: visual.position } : undefined} role="img" aria-label={`Imagem representativa de ${procedure.name}`}></div><h3>{procedure.name}</h3><p>{procedure.description}</p><WhatsAppLink label="Contato" treatment={procedure.name} className="procedure-contact" /></article>; })}</div>
+        <div className="procedure-card-grid icon-cards" id="treatment-panel" role="tabpanel" data-reveal>{config.treatmentCategories[treatmentCategory].procedures.map((procedure, index) => <a className="procedure-card icon-card" key={procedure.name} href={`/tratamentos/${treatmentSlug(procedure.name)}`}><span className="procedure-icon" aria-hidden="true">{treatmentIcons[index % treatmentIcons.length]}</span><h3>{procedure.name}</h3><span className="learn-more">Saiba mais <span aria-hidden="true">→</span></span></a>)}</div>
         <div className="treatments-cta" data-reveal><p>Quer entender qual cuidado combina com a sua necessidade?</p><WhatsAppLink label="Solicitar orçamento pelo WhatsApp" /></div>
       </section>
 
@@ -181,18 +171,12 @@ export function SiteShell() {
         <p className="results-note">O carrossel pausa ao receber foco ou ao passar o mouse.</p>
       </section>
 
-      <section className="section faq" id="duvidas" data-reveal>
-        <div className="section-heading"><p className="eyebrow dark"><span></span> Dúvidas frequentes</p><h2>Informação clara antes do primeiro contato.</h2></div>
-        <div className="faq-list">{config.faqs.map((faq, i) => <details key={faq.question} data-reveal><summary><span>{String(i + 1).padStart(2, "0")}</span>{faq.question}<i aria-hidden="true">+</i></summary><p>{faq.answer}</p></details>)}</div>
-      </section>
-
-      <section className="section contact" id="contato" data-reveal>
-        <div className="contact-copy"><p className="eyebrow"><span></span> Vamos conversar?</p><h2>O próximo passo começa com uma mensagem.</h2><p>Este site não possui formulário nem armazena sua solicitação. Ao escolher o WhatsApp, a conversa acontece diretamente no aplicativo.</p><WhatsAppLink label="Iniciar conversa no WhatsApp" /><small>Clicar não reserva horário. A equipe confirmará o atendimento pelo aplicativo.</small></div>
-        <div className="contact-card"><div><span>Endereço</span><strong>{config.clinic.address}</strong><small>{config.clinic.neighborhood} · {config.clinic.city} · CEP {config.clinic.postalCode}</small></div><div><span>Atendimento</span><strong>{config.clinic.hours}</strong></div><div><span>Contato</span>{getTelephoneUrl() ? <a href={getTelephoneUrl() ?? undefined}><strong>{config.clinic.phoneDisplay}</strong></a> : <strong>{config.clinic.phoneDisplay}</strong>}{config.clinic.email.startsWith("[") ? <small>E-mail ainda não informado</small> : <a href={`mailto:${config.clinic.email}`}><small>{config.clinic.email}</small></a>}</div>{config.clinic.mapUrl ? <a href={config.clinic.mapUrl} target="_blank" rel="noopener noreferrer" className="text-link light">Abrir no mapa ↗</a> : <span className="map-pending">Mapa disponível após configurar o endereço</span>}</div>
+      <section className="schedule-banner" id="duvidas" data-reveal>
+        <div><h2>Entre em contato e<br />realize seu agendamento</h2><WhatsAppLink label="Realizar agendamento" className="button banner-button" /></div>
       </section>
     </main>
 
-    <footer><div className="footer-main"><a href="#inicio" className="footer-logo"><img src="/logo-jr.png" width="120" height="120" alt="Jr Odontologia" loading="lazy" /></a><div><span>Navegação</span>{nav.slice(0, 4).map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><span>Informações</span><a href="/privacidade">Política de Privacidade</a><a href="/cookies">Política de Cookies</a><a href="/termos">Termos de Uso</a><p>{config.clinic.technicalLead}</p></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {config.clinic.name}. Todos os direitos reservados.</p><p>Conteúdo sujeito à revisão do responsável técnico antes da publicação.</p></div></footer>
+    <footer id="contato"><div className="footer-main footer-layout3"><a href="#inicio" className="footer-logo"><img src="/logo-jr.png" width="150" height="150" alt="Jr Odontologia" loading="lazy" /></a><div><span>Endereço</span><strong>{config.clinic.address}</strong><p>{config.clinic.neighborhood}<br />{config.clinic.city} · CEP {config.clinic.postalCode}</p><a href={config.clinic.mapUrl} target="_blank" rel="noopener noreferrer">Abrir no mapa ↗</a></div><div><span>Contato</span><strong>{config.clinic.phoneDisplay}</strong><a href={config.clinic.instagram} target="_blank" rel="noopener noreferrer">{config.clinic.instagramHandle}</a><p>{config.clinic.hours}</p></div><div><span>Políticas</span><a href="/privacidade">Política de Privacidade</a><a href="/cookies">Política de Cookies</a><a href="/termos">Termos de Uso</a></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {config.clinic.name}. Todos os direitos reservados.</p><p>{config.clinic.technicalLead}</p></div></footer>
     <WhatsAppLink label="WhatsApp" className="floating-whatsapp" />
   </>;
 }
