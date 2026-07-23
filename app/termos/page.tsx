@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = { title: "Termos de Uso | Jr Odontologia", description: "Condições de uso e caráter educativo das informações da Jr Odontologia." };
+
+export default function Terms() { return <main className="legal-page"><Link href="/" className="back-link">← Voltar ao site</Link><p className="eyebrow dark"><span></span> Uso responsável</p><h1>Termos de Uso</h1><p className="updated">Última atualização: 22 de julho de 2026.</p><section><h2>Finalidade do conteúdo</h2><p>As informações deste site são institucionais e educativas. Elas não substituem consulta, diagnóstico ou orientação individual de profissional habilitado.</p><h2>Contato pelo WhatsApp</h2><p>O envio de mensagem não representa agendamento, reserva de horário, diagnóstico ou garantia de atendimento. A equipe confirmará diretamente as possibilidades disponíveis.</p><h2>Informações provisórias</h2><p>Dados marcados como pendentes precisam ser conferidos pela clínica e pelo responsável técnico antes da publicação oficial.</p><h2>Propriedade e uso</h2><p>Textos, identidade visual e imagens do site não devem ser reproduzidos sem autorização de seus titulares.</p></section></main>; }
