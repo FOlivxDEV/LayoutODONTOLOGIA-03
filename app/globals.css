@@ -947,3 +947,15 @@ footer { padding-top:56px; background:#343736; }
 .treatments-cta p { color:#242827!important; font-weight:700; }
 .treatments-cta .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
 .treatments-cta .button.primary:hover { color:#fff; background:#242827; }
+
+/* Hero: tipografia contida e bloco alinhado à esquerda */
+.hero { padding-left:clamp(24px,4vw,72px); padding-right:clamp(24px,4vw,72px); }
+.hero-content { width:min(500px,46%); padding-top:42px; }
+.hero h1 { max-width:500px; margin-bottom:18px; font-size:clamp(2.35rem,3.55vw,3.85rem); line-height:1.03; }
+.hero-kicker { margin-bottom:14px; font-size:.62rem; letter-spacing:.18em; }
+.hero-copy { max-width:470px; font-size:.88rem; line-height:1.62; }
+.hero-actions { margin-top:23px; }
+.hero .helper { font-size:.66rem; }
+.hero .button { min-height:40px; padding:0 17px; font-size:.67rem; }
+@media (max-width:980px) { .hero-content { width:min(540px,64%); } }
+@media (max-width:620px) { .hero { padding-left:20px; padding-right:20px; }.hero-content { width:100%; }.hero h1 { font-size:clamp(2.25rem,11vw,3rem); } }
