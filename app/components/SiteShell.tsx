@@ -7,13 +7,7 @@ import type { TreatmentCategory } from "../site-config";
 
 const nav = [
   ["Início", "#inicio"], ["Clínica", "#clinica"], ["Tratamentos", "#tratamentos"],
-  ["Equipe", "#equipe"], ["Convênios", "#convenios"], ["Dúvidas", "#duvidas"], ["Contato", "#contato"],
-] as const;
-
-const heroInsurances = [
-  { name: "Servdonto", logo: "/insurance-servdonto.png" },
-  { name: "INPAO Dental", logo: "/insurance-inpao.png" },
-  { name: "Porto Saúde", logo: "/insurance-porto-saude.png" },
+  ["Equipe", "#equipe"], ["Dúvidas", "#duvidas"], ["Contato", "#contato"],
 ] as const;
 
 const procedureVisuals: Record<string, { image: string; position?: string }> = {
@@ -158,10 +152,6 @@ export function SiteShell() {
         <div className="hero-visual smile-glass" data-reveal>
           <img src="/clinic-hero.png" width="1536" height="1024" alt="Consultório odontológico moderno, claro e acolhedor" fetchPriority="high" />
           <div className="glass-note"><span className="pulse" aria-hidden="true"></span><div><strong>Odontologia feita para você</strong><small>Planejamento, conforto e cuidado próximo</small></div></div>
-        </div>
-        <div className="hero-insurance" id="convenios" data-reveal aria-label="Convênios odontológicos atendidos">
-          <p>Convênios atendidos</p>
-          <div className="hero-insurance-viewport"><div className="hero-insurance-track">{[0, 1].map((loop) => <div className="hero-insurance-set" key={loop} aria-hidden={loop === 1}>{heroInsurances.map((insurance) => <span key={`${loop}-${insurance.name}`}><img src={insurance.logo} width="520" height="220" alt={loop === 0 ? insurance.name : ""} /></span>)}</div>)}</div></div>
         </div>
       </section>
 
