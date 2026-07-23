@@ -932,3 +932,8 @@ footer { padding-top:56px; background:#343736; }
   .site-header .brand { width:112px; }
   .site-header .brand img { width:106px; transform:scale(1.04); }
 }
+
+/* Cabeçalho alinhado às bordas da janela */
+.site-header { padding-left:22px; padding-right:22px; }
+@media (min-width:1400px) { .site-header { padding-left:28px; padding-right:28px; } }
+@media (max-width:620px) { .site-header { padding-left:14px; padding-right:14px; } }
