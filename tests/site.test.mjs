@@ -8,8 +8,8 @@ test("centraliza e protege os links de WhatsApp", async () => {
     readFile(new URL("../app/components/SiteShell.tsx", import.meta.url), "utf8"),
   ]);
   assert.match(config, /encodeURIComponent/);
-  assert.match(config, /whatsapp:\s*"5513991879892"/);
-  assert.match(config, /orçamento odontológico/);
+  assert.match(config, /whatsapp:\s*"5511900004827"/);
+  assert.match(config, /Rafael Menezes Odontologia/);
   assert.match(shell, /rel="noopener noreferrer"/);
   assert.doesNotMatch(shell, /https:\/\/wa\.me\/\d+/);
 });
@@ -39,6 +39,6 @@ test("usa somente conteúdo institucional local", async () => {
   ]);
   assert.match(page, /<SiteShell\s*\/>/);
   assert.match(shell, /siteConfig/);
-  assert.match(config, /Jr Odontologia/);
+  assert.match(config, /Rafael Menezes Odontologia/);
   assert.doesNotMatch(`${page}\n${shell}`, /loadSiteContent|NEXT_PUBLIC_/i);
 });

@@ -938,6 +938,28 @@ footer { padding-top:56px; background:#343736; }
 @media (min-width:1400px) { .site-header { padding-left:28px; padding-right:28px; } }
 @media (max-width:620px) { .site-header { padding-left:14px; padding-right:14px; } }
 
+/* Rafael Menezes Odontologia — wordmark vetorial em HTML/CSS */
+.brand-mark { display:inline-flex; align-items:center; gap:12px; color:#183c3d; line-height:1; white-space:nowrap; }
+.brand-monogram { width:42px; height:42px; display:grid; place-items:center; border:1px solid currentColor; border-radius:50%; font-family:Georgia,serif; font-size:.78rem; font-weight:700; letter-spacing:-.08em; }
+.brand-wordmark { display:flex; flex-direction:column; gap:5px; }
+.brand-wordmark strong { font-size:.82rem; font-weight:760; letter-spacing:.12em; text-transform:uppercase; }
+.brand-wordmark small { font-size:.54rem; font-weight:650; letter-spacing:.32em; text-transform:uppercase; }
+.site-header .brand { width:auto; min-width:250px; height:64px; }
+.site-header .brand-mark { transform-origin:left center; transition:transform .25s ease,color .25s ease; }
+.site-header.is-scrolled .brand-mark { transform:scale(.9); }
+.footer-logo .brand-mark { color:#f1f4ef; }
+.footer-logo .brand-monogram { width:54px; height:54px; font-size:1rem; }
+.footer-logo .brand-wordmark strong { font-size:.9rem; }
+.footer-logo .brand-wordmark small { font-size:.58rem; }
+.footer-logo { align-self:start; }
+@media (max-width:620px) {
+  .site-header .brand { min-width:0; width:auto; }
+  .site-header .brand-wordmark strong { font-size:.67rem; }
+  .site-header .brand-wordmark small { font-size:.46rem; letter-spacing:.24em; }
+  .site-header .brand-monogram { width:36px; height:36px; }
+  .site-header .brand-mark { gap:8px; }
+}
+
 /* CTA da apresentação: transparente, com tipografia escura */
 .story-copy .button.primary { color:#242827; border:1px solid #242827; background:transparent; box-shadow:none; }
 .story-copy .button.primary:hover { color:#fff; background:#242827; }

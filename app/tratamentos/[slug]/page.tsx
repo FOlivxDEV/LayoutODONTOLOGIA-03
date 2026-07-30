@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getWhatsAppUrl, siteConfig } from "../../site-config";
+import { BrandMark } from "../../components/BrandMark";
 
 const icons = ["🦷", "✦", "◉", "⌁", "◇", "☼", "✓", "♢", "◎", "✧", "◌", "☆", "◈", "△"] as const;
 
@@ -45,7 +47,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
   return <>
     <header className="site-header treatment-page-header">
-      <a href="/#inicio" className="brand" aria-label="JR Odontologia — início"><img src="/logo-jr-transparent.png" width="128" height="64" alt="JR Odontologia" /></a>
+      <Link href="/#inicio" className="brand" aria-label="Rafael Menezes Odontologia — início"><BrandMark /></Link>
       <nav className="nav" aria-label="Navegação principal">{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
     </header>
     <main className="treatment-detail">
@@ -54,7 +56,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
         <img src={image} width="1600" height="900" alt={`Imagem representativa de ${treatment.name}`} />
       </section>
       <article>
-        <a className="back-link" href="/#tratamentos">← Voltar aos tratamentos</a>
+        <Link className="back-link" href="/#tratamentos">← Voltar aos tratamentos</Link>
         <p className="doctor-name">TRATAMENTO ODONTOLÓGICO</p>
         <h1>{treatment.name}</h1>
         <p>{treatment.description}</p>
@@ -62,7 +64,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
         {whatsapp && <a className="button primary" href={whatsapp} target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp ↗</a>}
       </article>
     </main>
-    <footer id="contato"><div className="footer-main footer-layout3"><a href="/#inicio" className="footer-logo"><img src="/logo-jr.png" width="150" height="150" alt="JR Odontologia" /></a><div><span>Endereço</span><strong>{siteConfig.clinic.address}</strong><p>{siteConfig.clinic.neighborhood}<br />{siteConfig.clinic.city} · CEP {siteConfig.clinic.postalCode}</p><a href={siteConfig.clinic.mapUrl} target="_blank" rel="noopener noreferrer">Abrir no mapa ↗</a></div><div><span>Contato</span><strong>{siteConfig.clinic.phoneDisplay}</strong><a href={siteConfig.clinic.instagram} target="_blank" rel="noopener noreferrer">{siteConfig.clinic.instagramHandle}</a><p>{siteConfig.clinic.hours}</p></div><div><span>Políticas</span><a href="/privacidade">Política de Privacidade</a><a href="/cookies">Política de Cookies</a><a href="/termos">Termos de Uso</a></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {siteConfig.clinic.name}. Todos os direitos reservados.</p><p>{siteConfig.clinic.technicalLead}</p></div></footer>
+    <footer id="contato"><div className="footer-main footer-layout3"><Link href="/#inicio" className="footer-logo" aria-label="Rafael Menezes Odontologia — início"><BrandMark compact /></Link><div><span>Endereço fictício</span><strong>{siteConfig.clinic.address}</strong><p>{siteConfig.clinic.neighborhood}<br />{siteConfig.clinic.city} · CEP {siteConfig.clinic.postalCode}</p><small>Informação demonstrativa</small></div><div><span>Contato fictício</span><strong>{siteConfig.clinic.phoneDisplay}</strong><p>{siteConfig.clinic.instagramHandle}</p><p>{siteConfig.clinic.hours}</p></div><div><span>Políticas</span><Link href="/privacidade">Política de Privacidade</Link><Link href="/cookies">Política de Cookies</Link><Link href="/termos">Termos de Uso</Link></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {siteConfig.clinic.name}. Projeto demonstrativo.</p><p>{siteConfig.clinic.technicalLead}</p></div></footer>
     {whatsapp && <a className="floating-whatsapp" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp"><img src="/whatsapp-icon.png" width="58" height="58" alt="" /></a>}
   </>;
 }

@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getWhatsAppUrl, siteConfig } from "../site-config";
 import type { TreatmentCategory } from "../site-config";
+import { BrandMark } from "./BrandMark";
 
 const nav = [
   ["Início", "#inicio"], ["Clínica", "#clinica"], ["Tratamentos", "#tratamentos"],
@@ -120,8 +121,8 @@ export function SiteShell() {
   return <>
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header ref={headerRef} className={`site-header ${headerScrolled ? "is-scrolled" : ""}`}>
-      <a href="#inicio" className="brand" aria-label="Jr Odontologia — início">
-        <img src="/logo-jr-transparent.png" width="96" height="96" alt="Jr Odontologia" />
+      <a href="#inicio" className="brand" aria-label="Rafael Menezes Odontologia — início">
+        <BrandMark />
       </a>
       <nav ref={navRef} id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Navegação principal">
         {nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
@@ -135,7 +136,7 @@ export function SiteShell() {
       <section className="hero" id="inicio">
         <div className="hero-slides" aria-live="polite">{heroSlides.map((slide, index) => <img key={slide.src} className={index === heroSlide ? "active" : ""} src={slide.src} alt={index === heroSlide ? slide.alt : ""} width="1536" height="1024" fetchPriority={index === 0 ? "high" : undefined} />)}</div>
         <div className="hero-content" data-reveal>
-          <p className="hero-kicker">JR Odontologia · Cubatão</p>
+          <p className="hero-kicker">Rafael Menezes Odontologia · Clínica fictícia</p>
           <h1>Excelência que se revela <em>em cada sorriso.</em></h1>
           <p className="hero-copy">Cuidado odontológico completo, tecnologia e atenção próxima para transformar cada consulta em uma experiência tranquila e segura.</p>
           <div className="hero-actions"><WhatsAppLink className="button hero-button" /></div>
@@ -150,9 +151,9 @@ export function SiteShell() {
       </section>
 
       <section className="section place-showcase" id="clinica">
-        <div className="place-main" data-reveal><h2>Fácil de encontrar.<br />Bom de chegar.</h2><p>Estamos no Centro de Cubatão, acima do Centro Médico Popular e na esquina com a Praça Princesa Isabel. Uma localização central, com acesso simples a partir dos principais pontos da cidade. Consulte a rota e confirme seu atendimento com a equipe antes de sair.</p></div>
+        <div className="place-main" data-reveal><h2>Um espaço pensado<br />para receber bem.</h2><p>A Rafael Menezes Odontologia é uma clínica fictícia criada para este projeto. O endereço, os canais de contato e os horários abaixo são demonstrativos e não correspondem a um estabelecimento real.</p></div>
         <button className="clinic-photo-stack compact" data-reveal type="button" onClick={() => setClinicSlide((current) => (current + 1) % 2)} onMouseEnter={() => setClinicPaused(true)} onMouseLeave={() => setClinicPaused(false)} onFocus={() => setClinicPaused(true)} onBlur={() => setClinicPaused(false)} aria-label="Alternar entre foto ilustrativa da fachada e do consultório"><img className={clinicSlide === 0 ? "active" : ""} src="/clinic-facade-illustrative.webp" width="1024" height="1280" alt="Imagem ilustrativa da fachada de uma clínica odontológica" loading="lazy" /><img className={clinicSlide === 1 ? "active" : ""} src="/clinic-office-illustrative.webp" width="1024" height="1280" alt="Imagem ilustrativa de um consultório odontológico" loading="lazy" /><span>Imagem ilustrativa · toque para alternar</span><i aria-hidden="true">{clinicSlide + 1} / 2</i></button>
-        <div className="place-contact" data-reveal><div className="place-grid"><div><span>Endereço</span><strong>{config.clinic.address}</strong><small>{config.clinic.neighborhood} · {config.clinic.city} · CEP {config.clinic.postalCode}</small></div><div><span>Instagram</span><strong>{config.clinic.instagramHandle}</strong><a href={config.clinic.instagram} target="_blank" rel="noopener noreferrer">Abrir perfil ↗</a></div><div><span>WhatsApp</span><strong>{config.clinic.phoneDisplay}</strong><small>Atendimento e orçamento pelo aplicativo</small></div><a className="map-preview" href={config.clinic.mapUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir a localização da Jr Odontologia no Google Maps"><span className="map-road road-one">Praça Princesa Isabel</span><span className="map-road road-two">Rua Bahia</span><i aria-hidden="true"></i><strong>JR Odontologia<br />Rua Bahia, 21</strong><small>Abrir no Google Maps ↗</small></a></div><div className="place-actions"><a href={config.clinic.mapUrl} target="_blank" rel="noopener noreferrer" className="button primary">Visualizar no Google Maps ↗</a><WhatsAppLink label="Falar pelo WhatsApp" className="button secondary" /></div></div>
+        <div className="place-contact" data-reveal><div className="place-grid"><div><span>Endereço fictício</span><strong>{config.clinic.address}</strong><small>{config.clinic.neighborhood} · {config.clinic.city} · CEP {config.clinic.postalCode}</small></div><div><span>Instagram fictício</span><strong>{config.clinic.instagramHandle}</strong><small>Perfil demonstrativo deste layout</small></div><div><span>Telefone fictício</span><strong>{config.clinic.phoneDisplay}</strong><small>Canal demonstrativo para agendamento</small></div><div className="map-preview" aria-label="Representação ilustrativa da localização fictícia"><span className="map-road road-one">Alameda Horizonte</span><span className="map-road road-two">Jardim Aurora</span><i aria-hidden="true"></i><strong>Rafael Menezes<br />Odontologia</strong><small>Localização ilustrativa</small></div></div><div className="place-actions"><WhatsAppLink label="Falar com a clínica" className="button secondary" /></div></div>
       </section>
 
       <section className="section treatments" id="tratamentos">
@@ -174,7 +175,7 @@ export function SiteShell() {
       </section>
     </main>
 
-    <footer id="contato"><div className="footer-main footer-layout3"><a href="#inicio" className="footer-logo"><img src="/logo-jr.png" width="150" height="150" alt="Jr Odontologia" loading="lazy" /></a><div><span>Endereço</span><strong>{config.clinic.address}</strong><p>{config.clinic.neighborhood}<br />{config.clinic.city} · CEP {config.clinic.postalCode}</p><a href={config.clinic.mapUrl} target="_blank" rel="noopener noreferrer">Abrir no mapa ↗</a></div><div><span>Contato</span><strong>{config.clinic.phoneDisplay}</strong><a href={config.clinic.instagram} target="_blank" rel="noopener noreferrer">{config.clinic.instagramHandle}</a><p>{config.clinic.hours}</p></div><div><span>Políticas</span><a href="/privacidade">Política de Privacidade</a><a href="/cookies">Política de Cookies</a><a href="/termos">Termos de Uso</a></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {config.clinic.name}. Todos os direitos reservados.</p><p>{config.clinic.technicalLead}</p></div></footer>
+    <footer id="contato"><div className="footer-main footer-layout3"><a href="#inicio" className="footer-logo" aria-label="Rafael Menezes Odontologia — início"><BrandMark compact /></a><div><span>Endereço fictício</span><strong>{config.clinic.address}</strong><p>{config.clinic.neighborhood}<br />{config.clinic.city} · CEP {config.clinic.postalCode}</p><small>Informação demonstrativa</small></div><div><span>Contato fictício</span><strong>{config.clinic.phoneDisplay}</strong><p>{config.clinic.instagramHandle}</p><p>{config.clinic.hours}</p></div><div><span>Políticas</span><a href="/privacidade">Política de Privacidade</a><a href="/cookies">Política de Cookies</a><a href="/termos">Termos de Uso</a></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} {config.clinic.name}. Projeto demonstrativo.</p><p>{config.clinic.technicalLead}</p></div></footer>
     <WhatsAppLink label="WhatsApp" className="floating-whatsapp" />
   </>;
 }

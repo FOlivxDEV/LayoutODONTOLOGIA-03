@@ -1,4 +1,4 @@
-# Auditoria técnica — Jr Odontologia
+# Auditoria técnica — Rafael Menezes Odontologia
 
 Data inicial: 22 de julho de 2026  
 Escopo: código versionado do site institucional, configuração de build e implantação.  
@@ -142,7 +142,7 @@ Validação concluída em 22 de julho de 2026:
 
 ## Pendências externas após a auditoria
 
-1. Confirmar CRO do Dr. Marcos Higa e responsável técnico.
+1. Manter visível que o CRO e os dados do responsável técnico são demonstrativos.
 2. Fornecer e-mail real do controlador/contato de privacidade.
 3. Documentar licenças e autorizações de todas as imagens, especialmente resultados de pacientes.
 4. Substituir imagens ilustrativas e fotos pendentes quando os arquivos autorizados forem fornecidos.

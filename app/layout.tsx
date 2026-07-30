@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
   alternates: { canonical: "/" },
-  openGraph: { title: siteConfig.seo.title, description: siteConfig.seo.description, type: "website", locale: "pt_BR", siteName: siteConfig.clinic.name, images: [{ url: "/og-layout3.png", width: 1731, height: 909, alt: "JR Odontologia — Excelência que se revela em cada sorriso." }] },
-  twitter: { card: "summary_large_image", title: siteConfig.seo.title, description: siteConfig.seo.description, images: ["/og-layout3.png"] },
+  openGraph: { title: siteConfig.seo.title, description: siteConfig.seo.description, type: "website", locale: "pt_BR", siteName: siteConfig.clinic.name, images: [{ url: "/og-rafael-menezes.png", width: 1536, height: 1024, alt: "Rafael Menezes Odontologia — clínica fictícia." }] },
+  twitter: { card: "summary_large_image", title: siteConfig.seo.title, description: siteConfig.seo.description, images: ["/og-rafael-menezes.png"] },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg" },
 };
@@ -25,12 +25,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.clinic.address,
-      addressLocality: "Cubatão",
+      addressLocality: "São Paulo",
       addressRegion: "SP",
       postalCode: siteConfig.clinic.postalCode,
       addressCountry: "BR",
     },
-    sameAs: [siteConfig.clinic.instagram],
   };
   return <html lang="pt-BR"><body>{children}<script type="application/ld+json">{JSON.stringify(structuredData).replace(/</g, "\\u003c")}</script></body></html>;
 }

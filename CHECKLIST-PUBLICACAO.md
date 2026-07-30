@@ -13,7 +13,7 @@
 
 ## Revisão obrigatória da clínica
 
-- [ ] Confirmar CRO e responsável técnico do Dr. Marcos Higa
+- [ ] Confirmar que CRO e responsável técnico permaneçam identificados como dados fictícios
 - [ ] Confirmar e-mail do controlador/contato de privacidade
 - [ ] Substituir imagens ilustrativas da fachada e consultório por fotos autorizadas
 - [ ] Adicionar fotos autorizadas dos profissionais sem imagem

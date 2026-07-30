@@ -4,24 +4,24 @@ export type Professional = { name: string; specialty: string; cro: string; bio: 
 
 export const siteConfig = {
   clinic: {
-    name: "Jr Odontologia", legalName: "Jr Odontologia", tagline: "Cuidado que acolhe. Odontologia que transforma.",
-    phoneDisplay: "+55 13 99187-9892", whatsapp: "5513991879892", email: "[E-MAIL A INFORMAR]",
-    address: "Rua Bahia, 21", postalCode: "11.510-070", city: "Cubatão/SP", neighborhood: "Centro",
-    mapUrl: "https://maps.app.goo.gl/YpEE6DTwTAhgpTGV9",
-    hours: "Particular: seg., ter., qui. e sex., 09h às 18h\nConvênios: qua., 09h às 18h; sáb., 09h às 12h",
-    instagram: "https://www.instagram.com/_jrodontologia/", instagramHandle: "@_jrodontologia",
-    technicalLead: "[INFORMAR RESPONSÁVEL TÉCNICO E CRO]",
+    name: "Rafael Menezes Odontologia", legalName: "Rafael Menezes Odontologia", tagline: "Precisão no cuidado. Leveza em cada sorriso.",
+    phoneDisplay: "+55 11 90000-4827", whatsapp: "5511900004827", email: "contato@rafaelmenezesodontologia.example",
+    address: "Alameda Horizonte, 248", postalCode: "00000-000", city: "São Paulo/SP", neighborhood: "Jardim Aurora",
+    mapUrl: "#clinica",
+    hours: "Segunda a sexta, das 08h às 19h\nSábado, das 08h às 13h",
+    instagram: "#contato", instagramHandle: "@rafaelmenezes.odontologia",
+    technicalLead: "Dr. Rafael Menezes · CRO-SP 00000 · Dados demonstrativos",
   },
   whatsapp: {
-    defaultMessage: "Olá! Acessei o site da Jr Odontologia e gostaria de solicitar um orçamento odontológico.",
+    defaultMessage: "Olá! Acessei o site da Rafael Menezes Odontologia e gostaria de solicitar um atendimento.",
     treatmentMessage: (treatment: string) => `Olá! Encontrei no site informações sobre ${treatment} e gostaria de solicitar um orçamento.`,
   },
   seo: {
-    title: "Jr Odontologia | Clínica odontológica em Cubatão",
-    description: "Tratamentos odontológicos e estética do sorriso no Centro de Cubatão. Conheça a Jr Odontologia e fale com a equipe pelo WhatsApp.",
-    canonicalUrl: "https://jr-odontologia.konektplus-dev.chatgpt.site",
+    title: "Rafael Menezes Odontologia | Cuidado e precisão",
+    description: "Clínica odontológica fictícia do Dr. Rafael Menezes, criada para apresentar uma experiência de cuidado próxima, moderna e personalizada.",
+    canonicalUrl: "https://consultorio-odontologico-layout-3.vercel.app",
   },
-  insurances: ["MetLife", "Porto Seguro", "Interodonto", "IMPAO", "AESP", "Santa Casa", "Dimay"],
+  insurances: ["Sorriso Mais", "Dental Vida", "BemEstar Odonto", "Plano Aurora"],
   treatmentCategories: [
     { name: "Procedimentos odontológicos", description: "Cuidados para prevenção, restauração, reabilitação e alinhamento do sorriso.", image: "procedimentos", procedures: [
       { name: "Implante dentário", description: "Alternativa para substituir dentes ausentes, indicada após avaliação individual." },
@@ -40,18 +40,16 @@ export const siteConfig = {
     ]},
   ] satisfies TreatmentCategory[],
   professionals: [
-    { name: "Dr. Marcos Higa", specialty: "Cirurgião-dentista", cro: "CRO 75.326", bio: "Atendimento experiente, próximo e voltado ao cuidado integral do sorriso.", highlights: ["25 anos de experiência", "Referência na Baixada Santista", "Extração, implante e ortodontia", "Cuidado odontológico completo"], photo: "/dr-marcos-photo-v2.webp" },
-    { name: "Dr. José Renato P. Melo", specialty: "Cirurgião-dentista", cro: "CRO 110061", bio: "Atua na equipe da Jr Odontologia com atendimento integrado e planejamento individualizado." },
-    { name: "Dr. José Roberto P. Melo", specialty: "Cirurgião-dentista", cro: "CRO 110060", bio: "Atua na equipe da Jr Odontologia com cuidado próximo e atenção às necessidades de cada paciente." },
+    { name: "Dr. Rafael Menezes", specialty: "Cirurgião-dentista fictício", cro: "CRO-SP 00000", bio: "Profissional fictício criado para representar um atendimento acolhedor, transparente e personalizado.", highlights: ["Planejamento individualizado", "Tecnologia e conforto", "Comunicação clara", "Cuidado integral do sorriso"], photo: "/professional-fictional-layout3.png" },
   ] satisfies Professional[],
   faqs: [
     { question: "Como solicitar um atendimento?", answer: "Use um dos botões de WhatsApp deste site. A equipe continuará o atendimento e confirmará a disponibilidade diretamente pelo aplicativo." },
-    { question: "A clínica atende convênios?", answer: "Sim. Atendemos INPAO, Porto Seguro e Servdonto. Confirme a cobertura do seu plano com a equipe antes do atendimento." },
+    { question: "A clínica atende convênios?", answer: "Para fins deste layout demonstrativo, a clínica trabalha com planos fictícios. A cobertura deve ser confirmada diretamente com a equipe." },
     { question: "Quais são as formas de pagamento?", answer: "Aceitamos dinheiro, PIX, cartão de crédito e cartão de débito." },
     { question: "Há atendimento de urgência?", answer: "Sim, conforme a disponibilidade da agenda. Entre em contato pelo WhatsApp para confirmar o atendimento." },
-    { question: "Onde fica a clínica?", answer: "Estamos na Rua Bahia, 21, Centro, Cubatão/SP, CEP 11.510-070, acima do Centro Médico Popular e na esquina com a Praça Princesa Isabel." },
-    { question: "Existe estacionamento?", answer: "Não temos estacionamento próprio. Há vagas disponíveis na rua e no entorno da praça." },
-    { question: "Qual é o horário de atendimento?", answer: "Particular: segunda, terça, quinta e sexta, das 09h às 18h. Convênios: quarta, das 09h às 18h, e sábado, das 09h às 12h." },
+    { question: "Onde fica a clínica?", answer: "O endereço exibido neste projeto é fictício: Alameda Horizonte, 248, Jardim Aurora, São Paulo/SP." },
+    { question: "Existe estacionamento?", answer: "Neste cenário fictício, há estacionamento conveniado próximo à clínica." },
+    { question: "Qual é o horário de atendimento?", answer: "Segunda a sexta, das 08h às 19h, e sábado, das 08h às 13h." },
   ],
 } as const;
 

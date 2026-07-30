@@ -1,6 +1,6 @@
-# Jr Odontologia
+# Rafael Menezes Odontologia
 
-Site institucional responsivo da Jr Odontologia, construído com Next.js 16, React 19, TypeScript, vinext/Vite e Cloudflare Workers. Não possui backend funcional, banco de dados, cadastro, agenda interna ou formulário; o contato é encaminhado ao WhatsApp.
+Site demonstrativo responsivo de uma clínica odontológica fictícia associada ao Dr. Rafael Menezes, construído com Next.js 16, React 19, TypeScript, vinext/Vite e Cloudflare Workers. Não possui backend funcional, banco de dados, cadastro, agenda interna ou formulário; todos os dados institucionais são fictícios.
 
 ## Executar
 
