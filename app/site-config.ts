@@ -19,7 +19,7 @@ export const siteConfig = {
   seo: {
     title: "Rafael Menezes Odontologia | Cuidado e precisão",
     description: "Clínica odontológica fictícia do Dr. Rafael Menezes, criada para apresentar uma experiência de cuidado próxima, moderna e personalizada.",
-    canonicalUrl: "https://consultorio-odontologico-layout-3.vercel.app",
+    canonicalUrl: "https://rafael-menezes-odontologia.vercel.app",
   },
   insurances: ["Sorriso Mais", "Dental Vida", "BemEstar Odonto", "Plano Aurora"],
   treatmentCategories: [
